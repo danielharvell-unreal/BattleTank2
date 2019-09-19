@@ -75,3 +75,6 @@ PluginsIntermediate
 
 # Cache files for the editor to use
 DerivedDataCache
+
+# Starter Content
+*/BattleTank2/Content/StarterContent
