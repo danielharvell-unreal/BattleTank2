@@ -6,7 +6,7 @@
 #include "GameFramework/PlayerController.h"
 #include "TankPlayerController.generated.h"
  
-//Forward Declaration
+//Forward Declarations
 class ATank;
 
 /**

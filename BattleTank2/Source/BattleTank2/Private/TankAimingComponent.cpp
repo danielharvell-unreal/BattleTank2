@@ -26,6 +26,7 @@ void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarrelToSet)
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float LauchSpeed)
 {
+	auto TankName = GetOwner()->GetName();
 	if (!Barrel) {
 		return;
 	}
@@ -41,6 +42,9 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LauchSpeed)
 		StartLocation, 
 		HitLocation, 
 		LauchSpeed, 
+		false,
+		0,
+		0,
 		ESuggestProjVelocityTraceOption::DoNotTrace
 	);
 
@@ -48,9 +52,16 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LauchSpeed)
 	if (bHaveAimSolution)
 	{
 		auto AimDirection = OutLaunchVelocity.GetSafeNormal();
-		auto TankName = GetOwner()->GetName();
 
 		MoveBarrelTowards(AimDirection);
+
+		auto Time = GetWorld()->GetTimeSeconds();
+		UE_LOG(LogTemp, Warning, TEXT("%f: Aim solution found for %s"), Time, *TankName);
+	}
+	else
+	{
+		auto Time = GetWorld()->GetTimeSeconds();
+		UE_LOG(LogTemp, Warning, TEXT("%f: No aim solution found for %s"), Time, *TankName);
 	}
 
 
