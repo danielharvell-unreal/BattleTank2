@@ -1,14 +1,15 @@
 // Fill out your copyright notice in the Description page of Project Settings.
-
 #pragma once
 
 #include "CoreMinimal.h"
+#include "UObject/Class.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
 //Forward Declarations
 class UTankBarrel;
 class UTankTurret;
+class AProjectile;
 class UTankAimingComponent;
 
 UCLASS()
@@ -41,10 +42,17 @@ private:
 	virtual void BeginPlay() override;
 
 	// Called to bind functionality to input
-	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
+	virtual void SetupPlayerInputComponent(class UInputComponent* InputComponent) override;
 
 	//Sensible launch speed starting at 40m/s
 	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 4000;
+
+	//Sensible launch speed starting at 40m/s
+	UPROPERTY(EditAnywhere, Category = Setup)
+	TSubclassOf<AProjectile> ProjectileBlueprint = nullptr;
+
+	//Local barrel reference for spawning projectile
+	UTankBarrel* Barrel = nullptr;
 
 };
