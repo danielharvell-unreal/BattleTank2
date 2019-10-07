@@ -1,14 +1,11 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-//#include "AssertionMacros.h"
-//#include "Engine/World.h"
-//#include "GameFramework/WorldSettings.h"
+#include "Tank.h"
 #include "BattleTank2.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
 #include "TankAimingComponent.h"
 #include "GameFramework/Pawn.h"
-#include "Tank.h"
 
 // Sets default values
 ATank::ATank()
@@ -40,7 +37,7 @@ void ATank::BeginPlay()
 }
 
 // Called to bind functionality to input
-void ATank::SetupPlayerInputComponent(class UInputComponent* InputComponent)
+void ATank::SetupPlayerInputComponent(UInputComponent* InputComponent)
 {
 	Super::SetupPlayerInputComponent(InputComponent);
 

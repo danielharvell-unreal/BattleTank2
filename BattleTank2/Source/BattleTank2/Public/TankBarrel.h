@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Components/StaticMeshComponent.h"
+#include <ObjectMacros.h>
 #include "TankBarrel.generated.h"
 
 /**
