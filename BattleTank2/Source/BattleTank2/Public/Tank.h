@@ -4,6 +4,8 @@
 #include "CoreMinimal.h"
 #include "UObject/Class.h"
 #include "GameFramework/Pawn.h"
+#include <ObjectMacros.h>
+#include "GameFramework/ProjectileMovementComponent.h"
 #include "Tank.generated.h"
 
 //Forward Declarations

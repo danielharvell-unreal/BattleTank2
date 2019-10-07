@@ -50,10 +50,6 @@ void ATank::AimAt(FVector HitLocation)
 
 void ATank::Fire()
 {
-
-	auto Time = GetWorld()->GetTimeSeconds();
-	UE_LOG(LogTemp, Warning, TEXT("%f: Tank fires"), Time);
-
 	if (!Barrel)
 	{
 		return;
@@ -63,10 +59,12 @@ void ATank::Fire()
 
 	AActor* SpawnActor(UClass * Class, FTransform const* Transform, const FActorSpawnParameters & SpawnParameters = FActorSpawnParameters());
 
-	GetWorld()->SpawnActor<AProjectile>(
+	auto Projectile = GetWorld()->SpawnActor<AProjectile>(
 		ProjectileBlueprint,
 		Barrel->GetSocketLocation(FName("Projectile")),
 		Barrel->GetSocketRotation(FName("Projectile"))
 	);
+
+	Projectile->LaunchProjectile(LaunchSpeed);
 }
 
