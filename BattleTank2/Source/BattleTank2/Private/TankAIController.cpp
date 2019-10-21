@@ -27,6 +27,6 @@ void ATankAIController::Tick(float DeltaTime)
 		ControlledTank->AimAt(PlayerTank->GetActorLocation());
 
 		//fire if ready
-		//ControlledTank->Fire();
+		ControlledTank->Fire();
 	}
 }
